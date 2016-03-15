@@ -1,10 +1,10 @@
-# Tietokantasovelluksen esittelysivu
+# Annin tietokantasovellustyö
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseen](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/)
+* [Linkki dokumentaatioon](https://github.com/pzanni/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
-## Työn aihe
+## Ystävänvälityspalvelu! :two_hearts:
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Pohjana [tämän aihe](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Ystavanvalityspalvelu.html) 
