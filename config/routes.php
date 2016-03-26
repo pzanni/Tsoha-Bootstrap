@@ -4,6 +4,14 @@
     HelloWorldController::index();
   });
 
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+  $routes->get('/profile', function() {
+    HelloWorldController::profile();
+  });
+
+ $routes->get('/login', function() {
+    HelloWorldController::login();
+  });
+
+  $routes->get('/register', function() {
+    HelloWorldController::register();
   });

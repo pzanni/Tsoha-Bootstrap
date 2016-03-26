@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h1>Rekisteröidy</h1>
+  </div>
+
+  <form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Käyttäjätunnus">
+  </div>
+
+  <div></div><h3></h3>
+
+  <div class="form-group">
+  	<input type="text" class="form-control" placeholder="Nimi">
+  </div>
+
+  <div></div>
+
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Salasana">
+  </div>
+
+  <div></div>
+
+  <div class="form-group">
+  	<input type="text" class="form-control" placeholder="Sukupuoli">
+  </div> 
+
+  <div>
+  	<h1></h1>
+  	<a class ="btn btn-success" href="{{base_path}}" role="button">Rekisteröidy</a>
+  </div>
+</form>
+
+{% endblock %}

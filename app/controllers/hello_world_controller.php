@@ -7,8 +7,16 @@
    	  View::make('home.html');
     }
 
-    public static function sandbox(){
+    public static function profile(){
       // Testaa koodiasi täällä
-      echo 'Hello World!';
+      View::make('profile.html');
+    }
+
+    public static function login(){
+      View::make('login.html');
+    }
+
+    public static function register(){
+      View::make('register.html');
     }
   }
