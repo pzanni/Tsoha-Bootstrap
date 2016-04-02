@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form>
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+    	<label>Sukupuoli</label>
+    	<input type="text" class="form-control">
+    </div>
+    <div class ="form-group">
+    	<label>Ikä</label>
+    	<input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+		<label>Kuvaus</label>
+		<textarea class="form-control" rows="7"></textarea>
+	</div>
+	<a class="btn btn-primary" href=editprofile role="button">Tallenna</a>
+</form>
+{% endblock %}

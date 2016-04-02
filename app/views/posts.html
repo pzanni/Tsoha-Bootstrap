@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h1>Ilmoitukset</h1>
+</div>
+
+<a class ="btn btn-success" href=addpost role="button">Lisää ilmoitus</a>
+
+
+<table class="table table-hover">
+	<thead>
+      <tr>
+        <th>Otsikko</th>
+        <th>Lähettäjä</th>
+        <th>Aika</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    	<tr>
+    		<td>Esimerkki-ilmoitus</td>
+    		<td>Megan Trainor</td>
+    		<td>2.4.2016</td>	
+    	</tr>
+    	<tr>
+    		<td>Toinen esimerkki</td>
+    		<td>Jennifer Aniston</td>
+    		<td>3.5.1789</td>
+    	</tr>
+    </tbody>
+</table>
+
+{% endblock %}

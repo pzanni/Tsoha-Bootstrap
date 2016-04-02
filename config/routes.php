@@ -15,3 +15,15 @@
   $routes->get('/register', function() {
     HelloWorldController::register();
   });
+
+  $routes->get('/posts', function() {
+    HelloWorldController::posts();
+  });
+
+  $routes->get('/addpost', function() {
+    HelloWorldController::addpost();
+  });
+
+  $routes->get('/editprofile', function() {
+    HelloWorldController::editprofile();
+  });

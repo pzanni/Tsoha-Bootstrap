@@ -19,4 +19,17 @@
     public static function register(){
       View::make('register.html');
     }
+
+    public static function posts(){
+      View::make('posts.html');
+    }
+
+    public static function addpost(){
+      View::make('addpost.html');
+    }
+
+    public static function editprofile(){
+      View::make('editprofile.html');
+    }
+
   }
