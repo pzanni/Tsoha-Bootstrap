@@ -15,3 +15,10 @@ Pohjana [tämän aihe](http://advancedkittenry.github.io/suunnittelu_ja_tyoympar
 * [Ilmoituksen lisäys](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/addpost)
 * [Profiilisivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/profile)
 * [Profiilin muokkaus](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/editprofile)
+* [Kirjautumissivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/login)
+* [Rekisteröitymissivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/register)
+* [Saapuneet viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/receivedmsgs)
+* [Lähetetyt viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sentmsgs)
+* [Lähetä viesti](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sendmsg)
+* [Ilmoitussivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/post)
+

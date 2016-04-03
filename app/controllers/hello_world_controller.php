@@ -32,4 +32,24 @@
       View::make('editprofile.html');
     }
 
+    public static function sendmsg(){
+      View::make('sendmsg.html');
+    }
+
+    public static function post(){
+      View::make('post.html');
+    }
+
+    public static function receivedmsgs(){
+      View::make('receivedmsgs.html');
+    }
+
+    public static function sentmsgs(){
+      View::make('sentmsgs.html');
+    }
+
+    public static function message(){
+      View::make('message.html');
+    }
+
   }
