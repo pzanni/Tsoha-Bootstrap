@@ -1,34 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Jennifer Lopez<small> J-Lo</small></h2>
+<row>
+	<div class="col-md-6">
+   			<h2>{{friend.name}}</h2>
+ 	</div>
+	<div class="col-md-4 col-md-offset-2">
+		<a class="btn btn-primary" href={{base_path}}/editprofile/{{friend.friendid}} role="button">Muokkaa profiilia</a>
+	</div>
+</row>
 
-<table class="table">
-	<tr>
-		<th>Sijainti:</th>
-		<td>Turku</td>
-		<th></th>
-	</tr>
-	<tr>
-		<th>Ikä:</th>
-		<td>40</td>
-		<th></th>
-	</tr>
-	<tr>
-		<th>Sukupuoli:</th>
-		<td>Nainen</td>
-		<th></th>
-	</tr>
-</table>
-<div class="row">
-	<div class="col-md-1"><strong>Kuvaus:</strong></div>
-  	<div class="col-xs-14 col-md-7">
-  		<p>Hei olen Jennifer! Asun Turussa kahden siskon ja kahden kissan kanssa. Pidän kahvista ja 		lenkkeilystä.
-  		</p>
-  	</div>
-</div>
-<a class="btn btn-primary" href=sendmsg role="button">Lähetä viesti</a>
-<div></div><h1>   </h1>
-<a class="btn btn-primary" href=editprofile role="button">Muokkaa profiilia</a>
-
+<row>
+	<div class ="col-md-12">
+		<table style="width:40%">
+			<tr>
+				<th>Ikä: </th>
+				<td>{{friend.age}}</td>
+			</tr>
+			<tr>
+				<th>Sukupuoli: </th>
+				<td>{{friend.gender}}</td>
+			</tr>
+			<tr>
+				<th>Sijainti: </th>
+				<td>{{friend.location}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-7">
+		{{friend.info}}
+	</div>
+</row>
+<row>
+	<div class="col-md-12"></div>
+	<div class ="col-md-12">
+		<a class="btn btn-primary" href={{base_path}}/sendmsg/{{friend.friendid}} role="button">Lähetä viesti</a>		
+	</div>
+</row>
 {% endblock %}

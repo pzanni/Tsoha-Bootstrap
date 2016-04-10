@@ -2,8 +2,14 @@
 {% block content %}
 
 <ul class="nav nav-tabs">
-  <li role="presentation"><a href=receivedmsgs>Saapuneet</a></li>
-  <li role="presentation" class="active"><a href=sentmsgs>Lähetetyt</a></li>
+  <li role="presentation"><a href={{base_path}}/receivedmsgs/{{friendid}}>Saapuneet</a></li>
+  <li role="presentation" class="active"><a href={{base_path}}/sentmsgs/{{friendid}}>Lähetetyt</a></li>
 </ul>
+<div class="list-group">
+
+	{% for message in messages %}
+		<a href={{base_path}}/message/{{message.msgid}} class="list-group-item">{{message.title}}</a>
+  	{% endfor %}
+</div>
 
 {% endblock %}

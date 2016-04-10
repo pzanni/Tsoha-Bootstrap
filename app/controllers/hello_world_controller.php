@@ -7,6 +7,24 @@
    	  View::make('home.html');
     }
 
+    public static function sandbox(){
+      $friends = Friend::all();
+      $friend = Friend::find(1);
+
+      $message = Message::find(1);
+      $messages = Message::all();
+
+      $post = Post::find(1);
+      $posts = Post::all();
+      
+      Kint::dump($friend);
+      Kint::dump($friends);
+      Kint::dump($posts);
+      Kint::dump($post);
+      Kint::dump($message);
+      Kint::dump($messages);
+  }
+
     public static function profile(){
       // Testaa koodiasi täällä
       View::make('profile.html');
@@ -18,10 +36,6 @@
 
     public static function register(){
       View::make('register.html');
-    }
-
-    public static function posts(){
-      View::make('posts.html');
     }
 
     public static function addpost(){

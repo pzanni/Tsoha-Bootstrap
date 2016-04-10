@@ -18,16 +18,14 @@
     </thead>
 
     <tbody>
+    {% for post in posts %}
+
     	<tr>
-    		<td><a href=post>Esimerkki-ilmoitus</a></td>
-    		<td>Jennifer Lopez</td>
-    		<td>2.4.2016</td>	
+    		<td><a href="{{base_path}}/post/{{post.postid}}">{{post.title}}</a></td>
+    		<td><a href="{{base_path}}/profile/{{post.sender.friendid}}">{{post.sender.name}}</td>
+    		<td>{{post.posttime}}</td>	
     	</tr>
-    	<tr>
-    		<td>Toinen esimerkki</td>
-    		<td>Jennifer Aniston</td>
-    		<td>3.5.1789</td>
-    	</tr>
+    {% endfor %}
     </tbody>
 </table>
 

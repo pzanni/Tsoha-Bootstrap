@@ -1,29 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form>
-    <div class="form-group">
-      <label>Nimi</label>
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group">
-    	<label>Sukupuoli</label>
-    	<input type="text" class="form-control">
-    </div>
-    <div class ="form-group">
-    	<label>Ikä</label>
-    	<input type="text" class="form-control">
-    </div>
-    <div class="form-group">
-    	<label>Sijainti</label>
-    	<input type="text" class="form-control">
-    </div>
-    <div class="form-group">
-		<label>Kuvaus</label>
-		<textarea class="form-control" rows="7"></textarea>
-	</div>
-	<div>
-		<a class="btn btn-primary" href=editprofile role="button">Tallenna</a>
-	</div>
-</form>
+
+<row>
+    <form method="post" action="{{base_path}}/profile">
+        <div class="col-md-12">
+            <h2>Muokkaa profiilia</h2>
+        </div>
+        <div class="col-md-4">        
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Nimi" class="form-control">
+            </div>
+            <div class="form-group">
+    	       <input type="text" name="gender" placeholder="Sukupuoli" class="form-control">
+            </div>
+            <div class ="form-group">
+    	       <input type="text" name="age" placeholder="Ikä" class="form-control">
+            </div>
+            <div class="form-group">
+    	       <input type="text" placeholder="Sijainti" name="location" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+	   	       <label>Kuvaus</label>
+		      <textarea class="form-control" name="info" rows="7"></textarea>
+	       </div>
+        </div>
+        <div class="col-md-12">
+              <button type="submit" class="btn btn-primary">Tallenna</button>
+        </div>
+    </form>
+</row>    
+
 {% endblock %}

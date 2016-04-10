@@ -3,14 +3,15 @@ INSERT INTO Friend (name, email, password, age, location, gender, info)
 			 'Moi olen Anni :)');
 
 INSERT INTO Friend (name, email, password, age, location, gender, info)
-	VALUES ('Megan Trainor', 'no@gmail.com', 'no123', '21', 'Vantaa', 'Nainen', 'Olen kaikki siitä bassosta');
+	VALUES ('Megan Trainor', 'no@gmail.com', 'no123', '21', 'Vantaa', 'Nainen', '21 vuotias laulaja :)');
 
-INSERT INTO Post (postTime, title, content)
-	VALUES (NOW(), 'Cluedo pelaajia', 'Etsin kokeneita Cluedo-pelin pelaajia  pääkaupunkiseudulta.');
+INSERT INTO Post (sender, postTime, title, content)
+	VALUES (1, NOW(), 'Cluedo pelaajia', 'Etsin kokeneita Cluedo-pelin pelaajia  pääkaupunkiseudulta.');
 
-INSERT INTO Message (content) 
-	VALUES ('Tallenna seuraavaksi molemmat tiedostot ja siirrä ne tuttuun tapaan palvelimelle. 
-			Suorita sen jälkeen terminaalissa projektisi juuressa komento bash create_tables.sh, 
-			joka ajaa ensin drop_tables.sql- ja sen jälkeen create_tables.sql-tiedoston tietokantaasi. 
-			Jos syntaksissasi oli virheitä, korjaa virheet ja aja bash create_tables.sh uudestaan.'
+INSERT INTO Message (sentTime ,title, content) 
+	VALUES (1, 2, NOW(), 'Moi', 'Tässä viesti Annilta Meganille.'
+			);
+
+INSERT INTO Message (sender, receiver, sentTime ,title, content) 
+	VALUES (2, 1, NOW(), 'Hei Anni', 'Tässä viesti Meganilta Annille'
 			);
