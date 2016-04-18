@@ -23,5 +23,5 @@ Pohjana [tämän aihe](http://advancedkittenry.github.io/suunnittelu_ja_tyoympar
 * [Ilmoitussivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/post/1)
 
 ######Tunnukset
-*jason@hotmail.com
-*jason123
+* jason@hotmail.com
+* jason123
