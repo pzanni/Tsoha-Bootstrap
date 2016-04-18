@@ -15,7 +15,12 @@
 		{{post.content}}
 	</div>
 	<div class="panel-footer">
-		<a class="btn btn-primary" href=sendmsg role="button">Lähetä viesti</a>
+		<form method="post" action="{{base_path}}/post/{{post.postid}}/destroy">
+			<a class="btn btn-primary" href={{base_path}}/sendmsg/{{post.sender.friendid}} role="button">Lähetä viesti</a>
+			{% if user_logged_in == post.sender %}
+				<button type="submit" class="btn btn-danger">Poista</button>
+			{% endif %}
+		</form>
 	</div>
 </div>
 

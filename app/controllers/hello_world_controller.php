@@ -8,22 +8,10 @@
     }
 
     public static function sandbox(){
-      $friends = Friend::all();
-      $friend = Friend::find(1);
-
-      $message = Message::find(1);
-      $messages = Message::all();
-
-      $post = Post::find(1);
-      $posts = Post::all();
-      
-      Kint::dump($friend);
-      Kint::dump($friends);
-      Kint::dump($posts);
-      Kint::dump($post);
-      Kint::dump($message);
-      Kint::dump($messages);
-  }
+      $post = new Post(array('title' => '', 'content' => 'testi-ilmoitus'));
+      $errors = $post->errors();
+      Kint::dump($errors);
+    }
 
     public static function profile(){
       // Testaa koodiasi täällä

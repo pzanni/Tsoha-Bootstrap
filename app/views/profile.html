@@ -6,7 +6,9 @@
    			<h2>{{friend.name}}</h2>
  	</div>
 	<div class="col-md-4 col-md-offset-2">
-		<a class="btn btn-primary" href={{base_path}}/editprofile/{{friend.friendid}} role="button">Muokkaa profiilia</a>
+		{% if friend == user_logged_in %}
+			<a class="btn btn-primary" href={{base_path}}/profile/edit role="button">Muokkaa profiilia</a>
+		{% endif %}
 	</div>
 </row>
 

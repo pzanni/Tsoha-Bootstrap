@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
+
 <ol class="breadcrumb">
-  <li><a href={{base_path}}/receivedmsgs/{{message.receiver.friendid}}>Saapuneet</a></li>
+  <li><a href={{base_path}}/receivedmsgs>Viestit</a></li>
   <li class="active">{{message.title}}</li>
 </ol>
 
@@ -21,7 +22,7 @@
 		{{message.content}}
 	</div>
 	<div class="panel-footer">
-		<a class="btn btn-primary" href=sendmsg role="button">Vastaa</a>
+		<a class="btn btn-primary" href={{base_path}}/sendmsg/{{message.sender.friendid}} role="button">Vastaa</a>
 	</div>
 </div>
 

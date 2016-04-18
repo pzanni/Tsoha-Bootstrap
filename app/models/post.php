@@ -4,6 +4,7 @@ class Post extends BaseModel {
  	public $postid, $sender, $posttime, $title, $content;
    	public function __construct($attributes){
     		parent::__construct($attributes);
+        $this->validators = array('validate_title');
   	}
 
   	public static function all() {
@@ -45,11 +46,29 @@ class Post extends BaseModel {
   	}		
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Post (title, content, posttime) VALUES (:title, :content, NOW()) RETURNING postid, posttime');
-      $query->execute(array('title' => $this->title, 'content' => $this->content));
+      $query = DB::connection()->prepare('INSERT INTO Post (title, content, posttime, sender) VALUES (:title, :content, NOW(), :sender) RETURNING postid, posttime');
+      $query->execute(array('title' => $this->title, 'content' => $this->content, 'sender' => $this->sender->friendid));
       $row = $query->fetch();
       $this->postid = $row['postid'];
       $this->posttime = $row['posttime'];
+    }
+
+    public function validate_title() {
+      $errors = array();
+      if($this->title == '' || $this->title == null) {
+        $errors[] = 'Otsikko ei saa olla tyhjä!';
+      }
+
+      if(strlen($this->title) < 3) {
+        $errors[] = 'Otsikon pituuden tulee olla vähintään kolme merkkiä!';
+      }
+
+      return $errors;
+    }
+
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE FROM Post WHERE postid = :postid');
+      $query->execute(array('postid' => $this->postid));
     }
     
 }

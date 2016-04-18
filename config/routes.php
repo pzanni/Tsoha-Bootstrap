@@ -1,11 +1,19 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    UserController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
+  });
+
+    $routes->post('/profile/edit', function() {
+      FriendController::update();
+    });
+
+  $routes->get('/profile/edit', function() {
+    FriendController::edit();
   });
 
   $routes->get('/profile/:friendid', function($friendid) {
@@ -13,11 +21,19 @@
   });
 
  $routes->get('/login', function() {
-    HelloWorldController::login();
+    UserController::login();
+  });
+
+ $routes->post('/login', function(){
+    UserController::handle_login();
   });
 
   $routes->get('/register', function() {
-    HelloWorldController::register();
+    UserController::register();
+  });
+
+  $routes->post('/register', function(){
+    UserController::add_user();
   });
 
   $routes->get('/posts', function() {
@@ -36,20 +52,20 @@
     PostController::create(); 
   });
 
-  $routes->get('/editprofile/:friendid', function($friendid) {
-    FriendController::edit($friendid);
-  });
-
   $routes->get('/sendmsg/:friendid', function($friendid) {
     MessageController::create($friendid);
   });
 
-  $routes->get('/receivedmsgs/:friendid', function($friendid) {
-    MessageController::received($friendid);
+  $routes->get('/receivedmsgs', function() {
+    MessageController::received();
   });
 
-  $routes->get('/sentmsgs/:friendid', function($friendid) {
-    MessageController::sent($friendid);
+  $routes->get('/sentmsgs', function() {
+    MessageController::sent();
+  });
+
+   $routes->post('/post/:id/destroy', function($postid){
+    PostController::destroy($postid);
   });
 
   $routes->get('/message/:msgid', function($msgid) {
@@ -60,6 +76,8 @@
     MessageController::store();
   });
 
+  
+ 
   
   
 

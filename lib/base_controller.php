@@ -3,7 +3,12 @@
   class BaseController{
 
     public static function get_user_logged_in(){
-      // Toteuta kirjautuneen käyttäjän haku tähän
+        if(isset($_SESSION['friend'])) {
+          $friendid = $_SESSION['friend'];
+          $friend = Friend::find($friendid);
+
+          return $friend;
+        }
       return null;
     }
 

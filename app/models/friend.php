@@ -1,10 +1,11 @@
 <?php
 
 class Friend extends BaseModel{
-    public $friendid, $name, $email, $password, $age, $location, $gender, $info;
+    public $friendid, $name, $email, $password, $age, $location, $gender, $info, $errors;
 
     public function __construct($attributes){
    		parent::__construct($attributes);
+      $this->validators = array('validate_name', 'validate_email', 'validate_password');
   	}
 
   	public static function all(){
@@ -49,4 +50,67 @@ class Friend extends BaseModel{
   		}
   		return null;
    	}
+
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Friend SET name = :name, gender = :gender, age = :age, location = :location, info = :info, email = :email, password = :password WHERE friendid = :friendid');
+      $query->execute(array(
+        'friendid' => $this->friendid,
+        'name' => $this->name, 
+        'gender' => $this->gender, 
+        'age' => $this->age, 
+        'location' => $this->location, 
+        'info' => $this->info,
+        'email' => $this->email,
+        'password' => $this->password
+        ));
+    }
+
+    public function save() {
+      $query = DB::connection()->prepare('INSERT INTO Friend (email, name, password) VALUES (:email, :name, :password) RETURNING friendid');
+      $query->execute(array('email' => $this->email, 'name' => $this->name, 'password' => $this->password));
+      $row = $query->fetch();
+      $this->friendid = $row['friendid'];
+    }
+
+    public function validate_name() {
+      $errors = array();
+      if($this->name == '' || $this->name == null) {
+        $errors[] = 'Nimi ei saa olla tyhjä';
+      }
+      return $errors;
+    }
+
+    public function validate_email() {
+      $errors = array();
+      if($this->email == '' || $this->email == null) {
+        $errors[] = 'Sähköposti ei saa olla tyhjä';
+      }
+      return $errors;
+    }
+
+    public function validate_password() {
+      $errors = array();
+      if($this->password == '' || $this->password == null) {
+        $errors[] = 'Salasana ei saa olla tyhjä';
+      } 
+
+      if(strlen($this->password) < 5) {
+        $errors[] = 'Salasanan pituuden tulee olla vähintään viisi merkkiä!';
+      }
+
+      return $errors;
+    }
+
+    public function authenticate($email, $password) {
+      $query = DB::connection()->prepare('SELECT * FROM Friend WHERE email = :email AND password = :password LIMIT 1');
+      $query->execute(array('email' => $email, 'password' => $password));
+      $row = $query->fetch();
+
+      
+      if($row) {
+        return Friend::find($row['friendid']);
+      } else {
+        return null;
+      } 
+    }
 }

@@ -14,11 +14,14 @@ Pohjana [tämän aihe](http://advancedkittenry.github.io/suunnittelu_ja_tyoympar
 * [Listaussivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/posts)
 * [Ilmoituksen lisäys](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/addpost)
 * [Profiilisivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/profile/1)
-* [Profiilin muokkaus](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/editprofile/1)
+* [Profiilin muokkaus](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/profile/edit/3)
 * [Kirjautumissivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/login)
 * [Rekisteröitymissivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/register)
-* [Saapuneet viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/receivedmsgs/1)
-* [Lähetetyt viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sentmsgs/1)
-* [Lähetä viesti](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sendmsg/1)
+* [Saapuneet viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/receivedmsgs)
+* [Lähetetyt viestit](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sentmsgs)
+* [Lähetä viesti](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/sendmsg/2)
 * [Ilmoitussivu](http://pzanni.users.cs.helsinki.fi/tietokantasovellusty-/post/1)
 
+######Tunnukset
+*jason@hotmail.com
+*jason123

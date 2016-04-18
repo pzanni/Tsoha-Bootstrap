@@ -4,6 +4,7 @@ class Message extends BaseModel {
  	public $msgid, $sender, $receiver, $title, $senttime, $content;
    	public function __construct($attributes){
     		parent::__construct($attributes);
+        $this->validators = array('validate_title');
   	}
 
   	public static function all() {
@@ -68,9 +69,9 @@ class Message extends BaseModel {
           'content' => $row['content'],
           'senttime' => $row['senttime']
           ));
-        return $messages;
+        
       }
-      return null;
+      return $messages;
     }
 
     public static function findFriendsSent($friendid) {
@@ -91,17 +92,32 @@ class Message extends BaseModel {
           'content' => $row['content'],
           'senttime' => $row['senttime']
           ));
-        return $messages;
       }
-      return null;
+      return $messages;
     }
 
     public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Message (receiver, title, content, senttime) VALUES (:receiver, :title, :content, NOW()) RETURNING msgid, senttime');
-      $query->execute(array('receiver' => $this->receiver, 'title' => $this->title, 'content' => $this->content));
+      $query = DB::connection()->prepare('INSERT INTO Message (receiver, title, content, senttime, sender) VALUES (:receiver, :title, :content, NOW(), :sender) RETURNING msgid, senttime');
+      $query->execute(array('receiver' => $this->receiver, 'title' => $this->title, 'content' => $this->content, 'sender' => $this->sender->friendid));
       $row = $query->fetch();
       $this->msgid = $row['msgid'];
       $this->senttime = $row['senttime'];
       $this->receiver = Friend::find($this->receiver);
     }
+
+    public function validate_title() {
+      $errors = array();
+      if($this->title == '' || $this->title == null) {
+        $errors[] = 'Otsikko ei saa olla tyhjä!';
+      }
+
+      if(strlen($this->title) < 3) {
+        $errors[] = 'Otsikon pituuden tulee olla vähintään kolme merkkiä!';
+      }
+
+      return $errors;
+    }
+
+
+    
 }
