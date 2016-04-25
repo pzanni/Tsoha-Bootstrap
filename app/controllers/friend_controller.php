@@ -10,11 +10,10 @@
   		View::make('profile.html', array('friend' => $friend, 'user_logged_in' => $user_logged_in));
   	}
 
+    //näyttää profiilinmuokkaussivun kirjautuneelle käyttäjälle
   	public static function edit() {
+      self::check_logged_in();
   		$user_logged_in = parent::get_user_logged_in();
-      if($user_logged_in == null) {
-        Redirect::to('/login');
-      }
       $attributes = array(
         'name' => $user_logged_in->name,
         'gender' => $user_logged_in->gender,
@@ -26,6 +25,7 @@
   		View::make('editprofile.html', array('user_logged_in' => $user_logged_in, 'attributes' =>$attributes));
   	}
 
+    //päivittää profiilin tiedot
     public static function update() {
       $user_logged_in = parent::get_user_logged_in();
       $params = $_POST;
@@ -44,11 +44,22 @@
       $errors = $friend->errors();
 
       if(count($errors) > 0) {
-        View::make('editprofile.html', array('errors' => $errors, 'attributes' => $attributes));
+        View::make('editprofile.html', array('errors' => $errors, 'user_logged_in' => $user_logged_in, 'attributes' => $attributes));
       } else {
         $friend->update();
         Redirect::to('/profile/' . $friend->friendid);
       }
+    }
+    //poistaa käyttäjätilin
+     public static function destroy($friendid) {
+      $user_logged_in = parent::get_user_logged_in();
+      
+      if($user_logged_in->friendid != $friendid) {
+        Redirect::to('/login');
+      } 
+      $friend = new Friend(array('friendid' => $friendid));
+      $friend->destroy();
+      Redirect::to('/', array('message' => 'Käyttäjätilisi on poistettu'));
     }
   }
 

@@ -2,10 +2,12 @@
 
   class UserController extends BaseController {
 
+    //näyttää sisäänkirjautumissivun kenelle tahansa
   	public static function login() {
       View::make('login.html');
     }
 
+    //käsittelee sisäänkirjautumisen
     public static function handle_login() {
       $params = $_POST;
       $friend = Friend::authenticate($params['email'], $params['password']);
@@ -17,16 +19,23 @@
       	Redirect::to('/');
       }
     }
+    //kirjautuu ulos
+    public static function logout() {
+      parent::log_out();
+    }
 
+    //näyttää kotisivun kenelle tahansa
     public static function index() {
     	$user_logged_in = parent::get_user_logged_in();
     	View::make('home.html', array('user_logged_in' => $user_logged_in));
     }
 
+    //näyttää rekisteröintisivun kenelle tahansa
     public static function register() {
     	View::make('register.html');
     }
 
+    //rekisteröi käyttäjän
     public static function add_user() {
     	$params = $_POST;
     	$attributes = (array(

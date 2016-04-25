@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<div class="col-md-9">
 <ol class="breadcrumb">
   <li><a href={{base_path}}/receivedmsgs>Viestit</a></li>
   <li class="active">{{message.title}}</li>
@@ -21,9 +21,14 @@
 	<div class="panel-body">
 		{{message.content}}
 	</div>
+
+
 	<div class="panel-footer">
-		<a class="btn btn-primary" href={{base_path}}/sendmsg/{{message.sender.friendid}} role="button">Vastaa</a>
+		{% if message.receiver == user_logged_in %}
+			<a class="btn btn-primary" href={{base_path}}/sendmsg/{{message.sender.friendid}} role="button">Vastaa</a>
+		{% endif %}
 	</div>
+</div>
 </div>
 
 {% endblock %}

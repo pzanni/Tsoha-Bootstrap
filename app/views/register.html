@@ -5,6 +5,7 @@
   <h2>Rekisteröidy käyttäjäksi</h2>
 </div>
 
+
 {% if errors %} 
   <div class = "alert alert-danger">
     <ul>
@@ -17,7 +18,7 @@
 
 <form method="post" action="{{base_path}}/register">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="form-group">
         <input type="text" name="email" class="form-control" placeholder="Sähköposti">
       </div>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="col-md-10">
 <ul class="nav nav-tabs">
   <li role="presentation"><a href={{base_path}}/receivedmsgs>Saapuneet</a></li>
   <li role="presentation" class="active"><a href={{base_path}}/sentmsgs>Lähetetyt</a></li>
@@ -8,8 +8,9 @@
 
 <div class="list-group">
 	{% for message in messages %}
-		<a href={{base_path}}/message/{{message.msgid}} class="list-group-item">{{message.title}}</a>
+		<a href={{base_path}}/message/{{message.msgid}} class="list-group-item"><div class="col-md-8">{{message.title}} </div><strong>Vastaanottaja:</strong> {{message.receiver.name}}</a>
   	{% endfor %}
+</div>
 </div>
 
 {% endblock %}

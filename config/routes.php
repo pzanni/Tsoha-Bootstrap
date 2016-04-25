@@ -8,9 +8,13 @@
     HelloWorldController::sandbox();
   });
 
-    $routes->post('/profile/edit', function() {
-      FriendController::update();
-    });
+  $routes->post('/profile/:friendid/destroy', function($friendid){
+    FriendController::destroy($friendid);
+  });
+
+  $routes->post('/profile/edit', function() {
+    FriendController::update();
+  });
 
   $routes->get('/profile/edit', function() {
     FriendController::edit();
@@ -20,12 +24,16 @@
     FriendController::profile($friendid);
   });
 
- $routes->get('/login', function() {
+  $routes->get('/login', function() {
     UserController::login();
   });
 
- $routes->post('/login', function(){
+  $routes->post('/login', function(){
     UserController::handle_login();
+  });
+
+  $routes->post('/logout', function(){
+    UserController::logout();
   });
 
   $routes->get('/register', function() {
@@ -36,12 +44,24 @@
     UserController::add_user();
   });
 
+  $routes->post('/posts/search', function() {
+    PostController::limited();
+  });
+
   $routes->get('/posts', function() {
     PostController::posts();
   });
 
   $routes->get('/post/:postid', function($postid) {
     PostController::post($postid);
+  });
+
+  $routes->get('/post/:postid/edit', function($postid) {
+    PostController::edit($postid);
+  }); 
+
+  $routes->post('/post/:postid/edit', function($postid) {
+    PostController::update($postid);
   });
 
   $routes->post('/post', function(){

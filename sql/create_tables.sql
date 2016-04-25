@@ -3,7 +3,7 @@ CREATE TABLE Friend(
 	name varchar(50) NOT NULL,
 	email text NOT NULL,
 	password varchar(50) NOT NULL,
-	age INTEGER,
+	age text,
 	location text,
 	gender text,
 	info text
@@ -23,5 +23,6 @@ CREATE TABLE Message(
 	receiver INTEGER REFERENCES Friend(friendId),
 	title text,
 	senttime Timestamp,
-	content text
+	content text,
+	read INTEGER
 )

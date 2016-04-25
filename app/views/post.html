@@ -15,12 +15,11 @@
 		{{post.content}}
 	</div>
 	<div class="panel-footer">
-		<form method="post" action="{{base_path}}/post/{{post.postid}}/destroy">
+		{% if user_logged_in != post.sender %}
 			<a class="btn btn-primary" href={{base_path}}/sendmsg/{{post.sender.friendid}} role="button">Lähetä viesti</a>
-			{% if user_logged_in == post.sender %}
-				<button type="submit" class="btn btn-danger">Poista</button>
-			{% endif %}
-		</form>
+		{% else %}
+			<a class="btn btn-primary" href={{base_path}}/post/{{post.postid}}/edit role="button">Muokkaa</a>
+		{% endif %}
 	</div>
 </div>
 

@@ -51,6 +51,7 @@ class Friend extends BaseModel{
   		return null;
    	}
 
+    //liää profiilin muutoksen tietokantaan
     public function update() {
       $query = DB::connection()->prepare('UPDATE Friend SET name = :name, gender = :gender, age = :age, location = :location, info = :info, email = :email, password = :password WHERE friendid = :friendid');
       $query->execute(array(
@@ -65,6 +66,8 @@ class Friend extends BaseModel{
         ));
     }
 
+
+    //tekee uuden käyttäjän tietokantaan
     public function save() {
       $query = DB::connection()->prepare('INSERT INTO Friend (email, name, password) VALUES (:email, :name, :password) RETURNING friendid');
       $query->execute(array('email' => $this->email, 'name' => $this->name, 'password' => $this->password));
@@ -72,6 +75,16 @@ class Friend extends BaseModel{
       $this->friendid = $row['friendid'];
     }
 
+    //poistaa  käyttäjän tietokannasta
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE FROM Post WHERE sender = :friendid');
+      $query->execute(array('friendid' => $this->friendid));
+
+      $query = DB::connection()->prepare('DELETE FROM Friend WHERE friendid = :friendid');
+      $query->execute(array('friendid' => $this->friendid));
+    }
+
+    //validoi nimen
     public function validate_name() {
       $errors = array();
       if($this->name == '' || $this->name == null) {
@@ -80,6 +93,7 @@ class Friend extends BaseModel{
       return $errors;
     }
 
+    //validoi sähköpostin
     public function validate_email() {
       $errors = array();
       if($this->email == '' || $this->email == null) {
@@ -88,6 +102,7 @@ class Friend extends BaseModel{
       return $errors;
     }
 
+    //validoi salasanan
     public function validate_password() {
       $errors = array();
       if($this->password == '' || $this->password == null) {
@@ -101,12 +116,12 @@ class Friend extends BaseModel{
       return $errors;
     }
 
+    //etsii käyttäjän tietokannasta ja palauttaa sen id:n
     public function authenticate($email, $password) {
       $query = DB::connection()->prepare('SELECT * FROM Friend WHERE email = :email AND password = :password LIMIT 1');
       $query->execute(array('email' => $email, 'password' => $password));
       $row = $query->fetch();
 
-      
       if($row) {
         return Friend::find($row['friendid']);
       } else {

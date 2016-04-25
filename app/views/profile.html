@@ -36,7 +36,9 @@
 <row>
 	<div class="col-md-12"></div>
 	<div class ="col-md-12">
-		<a class="btn btn-primary" href={{base_path}}/sendmsg/{{friend.friendid}} role="button">Lähetä viesti</a>		
+		{% if friend != user_logged_in %}
+			<a class="btn btn-primary" href={{base_path}}/sendmsg/{{friend.friendid}} role="button">Lähetä viesti</a>	
+		{% endif %}
 	</div>
 </row>
 {% endblock %}

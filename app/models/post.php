@@ -45,6 +45,44 @@ class Post extends BaseModel {
   		return null;
   	}		
 
+    //päivittää ilmoituksen tiedot tietokantaan
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Post SET title = :title, content = :content WHERE postid = :postid');
+      $query->execute(array(
+        'title' => $this->title,
+        'content' => $this->content,
+        'postid' => $this->postid
+        ));
+    }
+
+    //etsii hakusanalla tietokannasta content- ja title-kentistä
+    public static function findFromContent($searchword) {
+      $query_string = 'SELECT * FROM Post WHERE';
+      $query_string .= ' LOWER(content) LIKE :like';
+      $query_string .= ' OR LOWER(title) LIKE :like';
+      $options['like'] = '%' . $searchword['searchword'] . '%';
+    
+
+    $query = DB::connection()->prepare($query_string);
+    $query->execute($options);
+
+    $rows = $query->fetchAll();
+    $posts = array();
+
+      foreach($rows as $row) {
+        $sender = Friend::find($row['sender']);
+        $posts[] = new Post(array(
+          'postid'=> $row['postid'],
+          'sender' => $sender,
+          'posttime' => $row['posttime'],
+          'title' => $row['title'],
+          'content' => $row['content'],
+          ));
+      }
+      return $posts;
+    }
+
+    //tallentaa uuden ilmoituksen tietokantaan
     public function save() {
       $query = DB::connection()->prepare('INSERT INTO Post (title, content, posttime, sender) VALUES (:title, :content, NOW(), :sender) RETURNING postid, posttime');
       $query->execute(array('title' => $this->title, 'content' => $this->content, 'sender' => $this->sender->friendid));
@@ -66,9 +104,12 @@ class Post extends BaseModel {
       return $errors;
     }
 
+    //poistaa ilmoituksen tietokannasta
     public function destroy() {
       $query = DB::connection()->prepare('DELETE FROM Post WHERE postid = :postid');
       $query->execute(array('postid' => $this->postid));
+
+      
     }
     
 }

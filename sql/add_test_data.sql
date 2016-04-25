@@ -8,7 +8,7 @@ INSERT INTO Friend (name, email, password, age, location, gender, info)
 INSERT INTO Post (sender, postTime, title, content)
 	VALUES (1, NOW(), 'Cluedo pelaajia', 'Etsin kokeneita Cluedo-pelin pelaajia  pääkaupunkiseudulta.');
 
-INSERT INTO Message (sentTime ,title, content) 
+INSERT INTO Message (sender, receiver, sentTime ,title, content) 
 	VALUES (1, 2, NOW(), 'Moi', 'Tässä viesti Annilta Meganille.'
 			);
 

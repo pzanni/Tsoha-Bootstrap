@@ -1,10 +1,121 @@
 #main-container{
-  max-width: 1200px;
-  padding: 10px 25px;
+  max-width: 1100px;
+  padding: 25px 25px;
   margin: 0px auto;
+  background: white;
 }
 
 .navbar .container-fluid{
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0px auto;
+  background-color: #EBFD92;
+  color: #6a6a6a;
+} 
+
+a {
+  color: #2552aa;
+}
+
+.form-short {
+    width: 20%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.alert-success {
+    color: #617601;
+    background-color: #f4fec4;
+    border-color: #f4fec4;
+}
+
+a.list-group-item:hover, a.list-group-item:focus {
+    background-color: #f4fec4;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: #f4fec4;
+}
+
+.panel-info>.panel-heading {
+    color: #7f2c1c;
+    background-color: #edd9ad;
+    border-color: #f2e3c2;
+}
+
+.panel-success>.panel-heading {
+    color: #40300e;
+    background-color: #EBFD92;
+    border-color: #d6e9c6;
+}
+
+.panel-footer {
+    background-color: #f4fec4;
+}
+
+.btn-logout {
+  color: #6a6a6a;
+  background-color: #EBFD92;
+  border-color: #EBFD92;
+}
+
+.btn-logout:hover {
+  color: #6a6a6a;
+  background-color: #EBFD92;
+  border-color: #EBFD92;
+}
+
+.btn-primary {
+  color: black;
+  background-color: #EBFD92;
+  border-color: #EBFD92;
+}
+
+.btn-primary:hover {
+  background: #c5db5a;
+  color: white;
+  border-color: #c5db5a;
+}
+
+.btn-success {
+  color: black;
+  background: #e4c484;
+  border-color: #e4c484;
+}
+
+.btn-success:hover {
+  color: white;
+  background: #dbb05a;
+  border-color: #dbb05a;
+}
+
+.btn-danger {
+  color: black;
+  background: #e49484;
+  border-color: #e49484;
+}
+
+.btn-danger:hover {
+  color: white;
+  background: #db705a;
+  border-color: #db705a;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: #f0fdab;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr>th {
+    color: black;
 }

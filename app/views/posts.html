@@ -13,7 +13,11 @@
     <h1>Ilmoitukset</h1>
 </div>
 
-<a class ="btn btn-success" href=addpost role="button">Lisää ilmoitus</a>
+<form method="post" action="{{base_path}}/posts/search">
+    <input type="text" name="searchword" value="{{searchword}}" class="form-short">
+    <button type="submit" class="btn btn-primary">Hae</button>
+    <a class ="btn btn-primary" href=addpost role="button">Lisää ilmoitus</a>
+</form>
 
 <table class="table table-hover">
 	<thead>
