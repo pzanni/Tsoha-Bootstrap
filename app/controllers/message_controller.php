@@ -1,7 +1,7 @@
 <?php
 
   class MessageController extends BaseController {
-    //näyttää sisäänkirjautuneelle saapuneet viestit -sivun
+    //näyttää sisäänkirjautuneelle saapuneet viestit -sivun kääntyneessä järjestyksessä, jotta uusin viesti on ylhäällä :D
   	public static function received() {
       $user_logged_in = parent::get_user_logged_in();
       self::check_logged_in();
@@ -10,7 +10,7 @@
   		View::make('receivedmsgs.html', array('messages' => $reversed, 'user_logged_in' => $user_logged_in));
   	}
 
-    //näyttää sisäänkirjautuneelle lähetetyt viestit -sivun
+    //näyttää sisäänkirjautuneelle lähetetyt viestit -sivun kääntyneessä järjestyksessä
   	public static function sent() {
       $user_logged_in = parent::get_user_logged_in();
       self::check_logged_in();

@@ -4,7 +4,8 @@
     //näyttää ilmoitukset-sivun kenelle tahansa
   	public static function posts() {
   		$posts = Post::all();
-  		View::make('posts.html', array('posts' => $posts));
+      $reversed = array_reverse($posts);
+  		View::make('posts.html', array('posts' => $reversed));
   	}
 
     //näyttää tietyn ilmoituksen kenelle tahansa
@@ -97,7 +98,8 @@
       $lowerword = strtolower($params['searchword']);
       $searchword = array('searchword' => $lowerword);
       $posts = Post::findFromContent($searchword);
-      View::make('posts.html', array('posts' => $posts, 'searchword' => $params['searchword']));
+      $reversed = array_reverse($posts);
+      View::make('posts.html', array('posts' => $reversed, 'searchword' => $params['searchword']));
     }
   }
 
